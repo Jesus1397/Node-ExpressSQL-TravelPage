@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Open+Sans:400,700|Staatliches&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <%- include('../layout/includes/header.ejs') %>
+
+    <main class="container mt-5">
+      <h1 class="text-center mb-5"><%= titulo %></h1>
+      <div class="row">
+        <div class="col-md-12">
+          <blockquote class="text-center">
+            Lee sobre nuestros clientes y sus experiencias
+          </blockquote>
+          <div class="row testimoniales">
+            <% testimoniales.forEach(function(testimonial){ %>
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <blockquote class="blockquote"></blockquote>
+                  <p class="mb-0">
+                    <%= testimonial.mensaje %>
+                  </p>
+                  <div class="blockquote-footer">
+                    <%= testimonial.nombre %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h2 class="text-center">
+            Agrega un testimonial
+          </h2>
+          <%if(errores){%> <% errores.forEach(function(error){ %>
+          <div class="alert alert-danger text-center">
+            <%= error.mensaje %>
+          </div>
+          <% }) %> <%}%>
+          <div class="row justify-content-center ">
+            <div class="col-md-8">
+              <form class="form" action="/testimoniales" method="POST">
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input
+                    class="form-control"
+                    id="nombre"
+                    type="text"
+                    class=""
+                    placeholder="Tu nombre"
+                    name="nombre"
+                    value="<%= nombre %>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="correo">Correo</label>
+                  <input
+                    class="form-control"
+                    id="correo"
+                    type="correo"
+                    class=""
+                    placeholder="Tu correo"
+                    name="correo"
+                    value="<%= correo %>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="mensaje">Mensaje</label>
+                  <textarea
+                    name="mensaje"
+                    id="mensaje"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Tu mensaje"
+                  >
+<%=mensaje%></textarea
+                  >
+                </div>
+                <input
+                  type="submit"
+                  value="Enviar"
+                  class="btn btn-success btn-block"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../layout/includes/footer.ejs') %>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

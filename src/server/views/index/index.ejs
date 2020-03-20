@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Open+Sans:400,700|Staatliches&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="home">
+    <%- include('../layout/includes/header.ejs') %>
+
+    <div class="slider">
+      <h1>
+        Rio de Janeiro
+      </h1>
+      <em>
+        aventura
+      </em>
+    </div>
+    <main class="container mt-5">
+      <h2 class="text-center mb-5">
+        Sobre Nosotros
+      </h2>
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
+            praesentium quidem magnam ut nostrum adipisci consequatur
+            laudantium, id quibusdam quos veritatis hic assumenda necessitatibus
+            soluta, facere unde. Recusandae, officia facilis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae fugit
+            non veniam, delectus est dolor ea eveniet, enim aliquid ab
+            voluptatibus sequi sapiente, perferendis placeat quia a voluptatem
+            numquam minima!
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src="/img/inicio_nosotros.jpg" class="img-fluid" alt="" />
+        </div>
+      </div>
+
+      <h2 class="text-center mt-4 mb-5">Proximos viajes</h2>
+      <div class="row proximos-viajes mb-5">
+        <% viajes.forEach(function(viaje){ %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <img
+              src="img/destinos_<%= viaje.imagen %>.jpg"
+              class="img-fluid"
+              alt=""
+            />
+            <div class="card-body">
+              <h2><%= viaje.titulo %></h2>
+              <p><%=viaje.fecha_ida%> - <%=viaje.fecha_vuelta%></p>
+              <p><%=viaje.precio%></p>
+              <p><%=viaje.descripcion.substr(0,100)%></p>
+              <a href="viajes/<%= viaje.id %>" class="btn btn-success btn-block"
+                >Mas información</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </main>
+
+    <div class="descuento">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="contenido">
+              <h3>5% de Descuento</h3>
+              <p class="titulo">13 de abril de 2020 - 14 de agosto de 2020</p>
+              <p class="precio">$2500 USD</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <h2 class="text-center mt-4 mt-5">Testimoniales</h2>
+      <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12  mb-5">
+          <blockquote class="text-center  mb-5">
+            Lee sobre nuestros clientes y sus experiencias
+          </blockquote>
+          <div class="row testimoniales">
+            <% testimoniales.forEach(function(testimonial){ %>
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <blockquote class="blockquote"></blockquote>
+                  <p class="mb-0">
+                    <%= testimonial.mensaje %>
+                  </p>
+                  <div class="blockquote-footer">
+                    <%= testimonial.nombre %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('../layout/includes/footer.ejs') %>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
